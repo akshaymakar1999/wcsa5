@@ -10,7 +10,7 @@ public class LoginPage {
 	
 	@FindBy(xpath = "//*[@name='username']")private WebElement usnTB;
 	@FindBy(xpath="//*[@name='pwd']")private WebElement pssTB;
-	@FindBy(xpath="*//[contain(@class,'intial')]")private WebElement loginButton;
+	@FindBy(xpath="//*[contains(@class,'initial')]")private WebElement loginButton;
 	@FindBy(id="keepLooggedInCheckBox")private WebElement checkBox;
 	@FindBy(partialLinkText="Actimind Inc.")private WebElement actiMindLink;
 	
@@ -49,8 +49,17 @@ public class LoginPage {
 	{
 		usnTB.sendKeys(validUsername);
 		pssTB.sendKeys(validPassword);
+		loginButton.click();
 		
 		
+	}
+	public void invalidLoginMethod(String invalidUsername,String invalidPassword) throws InterruptedException
+	{
+		usnTB.sendKeys(invalidUsername);
+		pssTB.sendKeys(invalidPassword);
+		loginButton.click();
+		Thread.sleep(2000);
+		usnTB.clear();
 	}
 	
 	
